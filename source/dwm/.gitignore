@@ -1,0 +1,8 @@
+# gitignore for dwm
+
+dwm
+dwm.o
+config.h
+drw.o
+dwm.1
+dwm-msg

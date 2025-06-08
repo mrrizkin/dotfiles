@@ -1,0 +1,10 @@
+#!/bin/sh
+
+[ -r ./conf ] && . ./conf
+
+if [ ! -d "${RUNTIME_DIR}" ]; then
+    mkdir -p "${RUNTIME_DIR}"
+    chown -R colord:colord "${RUNTIME_DIR}"
+fi
+
+exec chpst -u colord /usr/lib/colord 2>&1

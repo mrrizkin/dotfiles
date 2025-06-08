@@ -1,0 +1,35 @@
+# list all gitignore for neovim
+
+# swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# session
+Session.vim
+Sessionx.vim
+Session/
+Sessionx/
+
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+# persistent undo
+[._]*.un~
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+[Dd]esktop.ini
+
+# Linux
+.directory
+
+db_ui
