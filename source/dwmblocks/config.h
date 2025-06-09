@@ -1,9 +1,9 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
-	/*Icon*/	/*Command*/		 				/*Update Interval*/	/*Update Signal*/
-    {"",        "warp.sh",         60,                 0},
-	{"",        "battery.sh",      60,                 0},
-	{"",        "datetime.sh",     15,                 0},
+  /*Icon*/	/*Command*/		 				/*Update Interval*/	/*Update Signal*/
+  {"",        "warp.sh",         60,                 0},
+  {"",        "battery.sh",      60,                 0},
+  {"",        "datetime.sh",     15,                 0},
 };
 
 //Sets delimiter between status commands. NULL character ('\0') means no delimiter.
