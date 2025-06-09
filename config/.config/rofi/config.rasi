@@ -1,241 +1,87 @@
 @import "~/.config/rofi/themes/catppuccin-mocha"
 
+/*-----------------------------------------------------
+ * General Configuration
+ *----------------------------------------------------*/
 configuration {
-  show-icons: true;
-  icons: true;
-  terminal: "wezterm";
-  modi: "drun,run,window,ssh,filebrowser";
-  sidebar-mode: true;
-  hide-scrollbar: false;
-  display-drun:        "󰀻 Apps";
-  display-run:         " Run";
-  display-window:      "󰖯 Windows";
-  display-ssh:         "󰣀 SSH";
-  display-filebrowser: "󰉋 Files";
-  font: "JetBrainsMono Nerd Font 11";
-  drun-display-format: "{name}";
-  application-fallback-icon: "application-x-addon";
+  modi:                         "drun,run,window,ssh,filebrowser";
+  terminal:                     "wezterm";
+  show-icons:                   true;
+  icons:                        true;
+  sidebar-mode:                 true;
+  hide-scrollbar:               false;
+  drun-display-format:          "{name}";
+  application-fallback-icon:    "application-x-addon";
+  font:                         "JetBrainsMono Nerd Font 11";
+  display-drun:                 "󰀻 Apps";
+  display-run:                  " Run";
+  display-window:               "󰖯 Windows";
+  display-ssh:                  "󰣀 SSH";
+  display-filebrowser:          "󰉋 Files";
 }
 
+/*-----------------------------------------------------
+ * Global Styles
+ *----------------------------------------------------*/
 * {
-  selected-active-foreground:  @base;
-  lightfg:                     @text;
-  separatorcolor:              @surface1;
-  urgent-foreground:           @red;
-  alternate-urgent-background: @surface0;
-  lightbg:                     @surface0;
-  background-color:            transparent;
-  border-color:                @surface1;
-  normal-background:           transparent;
-  selected-urgent-background:  @red;
-  alternate-active-background: @surface0;
-  spacing:                     8;
-  alternate-normal-foreground: @subtext1;
-  urgent-background:           @surface0;
-  selected-normal-foreground:  @base;
-  active-foreground:           @sapphire;
-  background:                  @base;
-  selected-active-background:  @sapphire;
-  active-background:           transparent;
-  selected-normal-background:  @mauve;
-  alternate-normal-background: transparent;
-  foreground:                  @text;
-  selected-urgent-foreground:  @base;
-  normal-foreground:           @text;
-  alternate-urgent-foreground: @red;
-  alternate-active-foreground: @sapphire;
+  background:                   @base;
+  background-color:             transparent;
+  normal-background:            transparent;
+  selected-normal-background:   @mauve;
+  selected-active-background:   @sapphire;
+  selected-urgent-background:   @red;
+  alternate-normal-background:  transparent;
+  alternate-active-background:  @surface0;
+  alternate-urgent-background:  @surface0;
 
-  gradient-start: @mauve;
-  gradient-end:   @sapphire;
-  accent:         @mauve;
-  accent-alt:     @sapphire;
+  normal-foreground:            @text;
+  selected-normal-foreground:   @base;
+  selected-active-foreground:   @base;
+  selected-urgent-foreground:   @base;
+  alternate-normal-foreground:  @subtext1;
+  alternate-active-foreground:  @sapphire;
+  alternate-urgent-foreground:  @red;
+  active-foreground:            @sapphire;
+  urgent-foreground:            @red;
+  urgent-background:            @surface0;
+
+  foreground:                   @text;
+  lightfg:                      @text;
+  lightbg:                      @surface0;
+  border-color:                 @surface1;
+  separatorcolor:               @surface1;
+  spacing:                      8;
+
+  accent:                       @mauve;
+  accent-alt:                   @sapphire;
+  gradient-start:               @mauve;
+  gradient-end:                 @sapphire;
 }
 
-element {
-    padding:           12px 16px;
-    cursor:            pointer;
-    spacing:           12px;
-    border:            0px;
-    border-radius:     10px;
-    background-color:  transparent;
-    text-color:        @text;
-}
-
-element normal.normal {
-    background-color:  transparent;
-    text-color:        @text;
-}
-
-element selected.normal, element selected.active {
-    background-color:  @accent;
-    text-color:        @base;
-}
-
-element normal.active, element alternate.active {
-    background-color:  @surface0;
-    text-color:        @sapphire;
-}
-
-element normal.urgent, element alternate.urgent, element selected.urgent {
-    background-color:  @red;
-    text-color:        @base;
-}
-
-element-icon {
-    background-color:  transparent;
-    size:              24px;
-    cursor:            inherit;
-    text-color:        inherit;
-    margin:            0px 8px 0px 0px;
-}
-
-element-text {
-    background-color:  transparent;
-    cursor:            inherit;
-    highlight:         inherit;
-    text-color:        inherit;
-    font:              "JetBrainsMono Nerd Font Medium 10";
-}
-
-element selected element-text {
-    font:              "JetBrainsMono Nerd Font Bold 10";
-}
-
+/*-----------------------------------------------------
+ * Window
+ *----------------------------------------------------*/
 window {
-    padding:          0px;
-    background-color: @base;
-    border:           2px;
-    transparency:     "real";
-    border-color:     @surface1;
-    border-radius:    16px;
-    width:            65%;
-    height:           55%;
+  width:            65%;
+  height:           55%;
+  padding:          0px;
+  border:           2px;
+  border-radius:    16px;
+  background-color: @base;
+  border-color:     @surface1;
+  transparency:     "real";
 }
 
+/*-----------------------------------------------------
+ * Layout Elements
+ *----------------------------------------------------*/
 mainbox {
-    orientation:      horizontal;
-    children:         [ "sidebar", "content" ];
-    padding:          0px;
-    border:           0px;
-    spacing:          0px;
-    background-color: transparent;
-}
-
-message {
-    padding:           16px;
-    border-color:      @surface1;
-    border:            1px solid;
-    border-radius:     10px;
-    background-color:  @surface0;
-    margin:            8px 0px;
-}
-
-textbox {
-    text-color:        @text;
-    background-color:  transparent;
-}
-
-listview {
-    padding:           8px 0px;
-    scrollbar:         true;
-    border:            0px;
-    spacing:           4px;
-    fixed-height:      true;
-    dynamic:           true;
-    background-color:  transparent;
-    scroll-method:     1;
-}
-
-scrollbar {
-    width:             6px;
-    padding:           0px;
-    handle-width:      6px;
-    border:            0px;
-    handle-color:      @accent;
-    background-color:  @surface0;
-    border-radius:     3px;
-}
-
-error-message {
-    padding:           16px;
-    border:            2px solid;
-    border-color:      @red;
-    border-radius:     10px;
-    background-color:  @surface0;
-    text-color:        @red;
-}
-
-sidebar {
-    orientation:      vertical;
-    background-color: @mantle;
-    border-radius:    14px 0px 0px 14px;
-    padding:          12px 8px;
-    spacing:          8px;
-    border:           0px;
-    width:            120px;
-}
-
-button {
-    cursor:           pointer;
-    spacing:          8px;
-    text-color:       @subtext1;
-    background-color: transparent;
-    border:           0px;
-    border-radius:    10px;
-    padding:          12px 16px;
-    font:             "JetBrainsMono Nerd Font Medium 10";
-}
-
-button selected {
-    background-color: @accent;
-    text-color:       @base;
-    font:             "JetBrainsMono Nerd Font Bold 10";
-}
-
-num-filtered-rows, num-rows {
-    expand:            false;
-    text-color:        @subtext0;
-    font:              "JetBrainsMono Nerd Font 9";
-}
-
-textbox-num-sep {
-    expand:            false;
-    str:               "/";
-    text-color:        @subtext0;
-}
-
-inputbar {
-    padding:          16px 20px;
-    spacing:          12px;
-    text-color:       @text;
-    border:           0px;
-    border-radius:    12px;
-    background-color: @surface0;
-    margin:           0px 0px 16px 0px;
-    children:         [ "prompt", "textbox-prompt-colon", "entry", "num-filtered-rows", "textbox-num-sep", "num-rows" ];
-}
-
-entry {
-    text-color:        @text;
-    cursor:            text;
-    spacing:           0px;
-    placeholder-color: @subtext0;
-    placeholder:       "Search applications...";
-    background-color:  transparent;
-    font:              "JetBrainsMono Nerd Font 11";
-}
-
-prompt {
-    spacing:          0px;
-    text-color:       @accent;
-    font:             "JetBrainsMono Nerd Font Bold 11";
-}
-
-textbox-prompt-colon {
-    margin:           0px 8px 0px 0px;
-    expand:           false;
-    str:              "";
-    text-color:       @accent;
+  orientation:      horizontal;
+  children:         [ "sidebar", "content" ];
+  padding:          0px;
+  border:           0px;
+  spacing:          0px;
+  background-color: transparent;
 }
 
 #content {
@@ -246,4 +92,206 @@ textbox-prompt-colon {
   padding:          16px;
   background-color: @base;
   border-radius:    0px 14px 14px 0px;
+}
+
+/*-----------------------------------------------------
+ * Sidebar
+ *----------------------------------------------------*/
+sidebar {
+  orientation:      vertical;
+  background-color: @mantle;
+  border-radius:    14px 0px 0px 14px;
+  padding:          12px 8px;
+  spacing:          8px;
+  border:           0px;
+  width:            120px;
+}
+
+/*-----------------------------------------------------
+ * Input Bar
+ *----------------------------------------------------*/
+inputbar {
+  padding:          16px 20px;
+  spacing:          12px;
+  margin:           0px 0px 16px 0px;
+  border:           0px;
+  border-radius:    12px;
+  background-color: @surface0;
+  text-color:       @text;
+  children:         [ "prompt", "textbox-prompt-colon", "entry", "num-filtered-rows", "textbox-num-sep", "num-rows" ];
+}
+
+entry {
+  text-color:        @text;
+  background-color:  transparent;
+  spacing:           0px;
+  cursor:            text;
+  placeholder:       "Search applications...";
+  placeholder-color: @subtext0;
+  font:              "JetBrainsMono Nerd Font 11";
+}
+
+prompt {
+  spacing:          0px;
+  text-color:       @accent;
+  font:             "JetBrainsMono Nerd Font Bold 11";
+}
+
+textbox-prompt-colon {
+  str:              "";
+  expand:           false;
+  margin:           0px 8px 0px 0px;
+  text-color:       @accent;
+}
+
+/*-----------------------------------------------------
+ * List View
+ *----------------------------------------------------*/
+listview {
+  padding:           8px 0px;
+  border:            0px;
+  spacing:           4px;
+  fixed-height:      true;
+  dynamic:           true;
+  scroll-method:     1;
+  scrollbar:         true;
+  background-color:  transparent;
+}
+
+/*-----------------------------------------------------
+ * Scrollbar
+ *----------------------------------------------------*/
+scrollbar {
+  width:             6px;
+  padding:           0px;
+  border:            0px;
+  handle-width:      6px;
+  handle-color:      @accent;
+  background-color:  @surface0;
+  border-radius:     3px;
+}
+
+/*-----------------------------------------------------
+ * Elements
+ *----------------------------------------------------*/
+element {
+  padding:           12px 16px;
+  cursor:            pointer;
+  spacing:           12px;
+  border:            0px;
+  border-radius:     10px;
+  background-color:  transparent;
+  text-color:        @text;
+}
+
+element normal.normal {
+  background-color:  transparent;
+  text-color:        @text;
+}
+
+element selected.normal,
+element selected.active {
+  background-color:  @accent;
+  text-color:        @base;
+}
+
+element normal.active,
+element alternate.active {
+  background-color:  @surface0;
+  text-color:        @sapphire;
+}
+
+element normal.urgent,
+element alternate.urgent,
+element selected.urgent {
+  background-color:  @red;
+  text-color:        @base;
+}
+
+/*-----------------------------------------------------
+ * Element Icon & Text
+ *----------------------------------------------------*/
+element-icon {
+  size:              24px;
+  background-color:  transparent;
+  text-color:        inherit;
+  cursor:            inherit;
+  margin:            0px 8px 0px 0px;
+}
+
+element-text {
+  font:              "JetBrainsMono Nerd Font Medium 10";
+  background-color:  transparent;
+  text-color:        inherit;
+  cursor:            inherit;
+  highlight:         inherit;
+}
+
+element selected element-text {
+  font:              "JetBrainsMono Nerd Font Bold 10";
+}
+
+/*-----------------------------------------------------
+ * Buttons
+ *----------------------------------------------------*/
+button {
+  spacing:          8px;
+  padding:          12px 16px;
+  cursor:           pointer;
+  border:           0px;
+  border-radius:    10px;
+  background-color: transparent;
+  text-color:       @subtext1;
+  font:             "JetBrainsMono Nerd Font Medium 10";
+}
+
+button selected {
+  background-color: @accent;
+  text-color:       @base;
+  font:             "JetBrainsMono Nerd Font Bold 10";
+}
+
+/*-----------------------------------------------------
+ * Filter Row Counters
+ *----------------------------------------------------*/
+num-filtered-rows,
+num-rows {
+  expand:           false;
+  text-color:       @subtext0;
+  font:             "JetBrainsMono Nerd Font 9";
+}
+
+textbox-num-sep {
+  str:              "/";
+  expand:           false;
+  text-color:       @subtext0;
+}
+
+/*-----------------------------------------------------
+ * Messages
+ *----------------------------------------------------*/
+message {
+  padding:           16px;
+  margin:            8px 0px;
+  border:            1px solid;
+  border-radius:     10px;
+  background-color:  @surface0;
+  border-color:      @surface1;
+}
+
+error-message {
+  padding:           16px;
+  border:            2px solid;
+  border-radius:     10px;
+  background-color:  @surface0;
+  text-color:        @red;
+  border-color:      @red;
+}
+
+/*-----------------------------------------------------
+ * Textbox (Generic)
+ *----------------------------------------------------*/
+textbox {
+  background-color:  transparent;
+  text-color:        @text;
 }
