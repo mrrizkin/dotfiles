@@ -1,6 +1,4 @@
-# Beautiful Catppuccin Mocha theme for dunst notifications
 [global]
-    ### Display ###
     monitor = 0
     follow = none
 
@@ -75,35 +73,29 @@
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
 
-# Catppuccin Mocha Colors
+# Urgency levels
 [urgency_low]
-    # Base notification (info, regular)
     background = "#1e1e2e"
     foreground = "#cdd6f4"
     frame_color = "#313244"
     timeout = 5
-    # Icon for low urgency
     default_icon = /usr/share/icons/Papirus/48x48/status/dialog-information.svg
 
 [urgency_normal]
-    # Normal notifications
     background = "#1e1e2e"
     foreground = "#cdd6f4"
     frame_color = "#89b4fa"
     timeout = 8
-    # Icon for normal urgency
     default_icon = /usr/share/icons/Papirus/48x48/status/dialog-information.svg
 
 [urgency_critical]
-    # Critical/error notifications
     background = "#1e1e2e"
     foreground = "#f38ba8"
     frame_color = "#f38ba8"
     timeout = 0
-    # Icon for critical urgency
     default_icon = /usr/share/icons/Papirus/48x48/status/dialog-error.svg
 
-# App-specific notification styling
+# App-specific sections
 [battery_low]
     appname = "Battery"
     background = "#1e1e2e"
@@ -163,12 +155,12 @@
     frame_color = "#f5c2e7"
     timeout = 2
 
-# Progress bar colors
+# Special UI styling
 [progress_bar]
     progress_bar_frame_color = "#313244"
     progress_bar_color = "#89b4fa"
 
-# Special formatting for specific messages
+# Specific message patterns
 [signed_on]
     appname = "Pidgin"
     summary = "*signed on*"
@@ -183,9 +175,9 @@
     appname = "Pidgin"
     summary = "*says*"
     urgency = critical
-    format = "%s "%b""
+    format = "%s \"%b\""
 
-# System notifications
+# General system
 [system]
     appname = "System"
     background = "#1e1e2e"
@@ -193,7 +185,6 @@
     frame_color = "#89b4fa"
     timeout = 5
 
-# Calendar notifications (from datetime click)
 [calendar]
     appname = "*Calendar*"
     background = "#1e1e2e"
@@ -201,7 +192,6 @@
     frame_color = "#74c7ec"
     timeout = 5
 
-# Time zone notifications
 [time]
     summary = "*Time*"
     background = "#1e1e2e"
