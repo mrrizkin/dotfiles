@@ -1,0 +1,1 @@
+/home/sentinel/Repos/Dotfiles/script/statusbar/fan.sh
