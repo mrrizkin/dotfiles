@@ -81,8 +81,8 @@ local maps = {
 
 	-- Telescope
 	nmap("<c-p>", "<cmd>Telescope find_files hidden=true<cr>", opts("Find files")),
-	nmap("<c-s-p>", "<cmd>Telescope commands<cr>", opts("Commands")),
-	nmap("<c-t>", "<cmd>Telescope<cr>", opts("Telescope")),
+	nmap("<c-t>", "<cmd>Telescope commands<cr>", opts("Commands")),
+	nmap("<m-t>", "<cmd>Telescope<cr>", opts("Telescope")),
 	nmap("<m-b>", "<cmd>Telescope buffers<cr>", opts("Buffers")),
 	nmap("<m-r>", function()
 		telescope.extensions.live_grep_args.live_grep_args()
@@ -125,6 +125,9 @@ local maps = {
 	nmap("<leader>th", function()
 		fterm.htop:toggle()
 	end, opts("Toggle htop")),
+	nmap("<leader>tc", function()
+		fterm.ai:toggle()
+	end, opts("Toggle ai")),
 
 	-- Zen mode
 	nmap("<leader>zz", function()

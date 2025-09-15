@@ -4,6 +4,7 @@ return function()
 		ensure_installed = {
 			"gopls",
 			"lua_ls",
+			"ts_ls",
 		},
 	}
 
@@ -66,9 +67,37 @@ return function()
 				completeUnimported = true,
 				usePlaceholders = true,
 				staticcheck = true,
-				analyses = { unusedparams = true },
+				analyses = {
+					unusedparams = true,
+					nilness = true,
+					packagecomment = false,
+				},
 			},
 		},
+	})
+
+	lspconfig.pyright.setup({
+		capabilities = capabilities,
+		filetypes = { "python" },
+		root_dir = lspconfig.util.root_pattern("pyproject.toml", "setup.py", "requirements.txt", ".git"),
+		settings = {
+			python = {
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "strict",
+					useLibraryCodeForTypes = true,
+					extraPaths = {
+						vim.fn.stdpath("data") .. "/lazy/github.com/nvim-treesitter/nvim-treesitter",
+					},
+				},
+			},
+		},
+	})
+
+	lspconfig.svelte.setup({
+		capabilities = capabilities,
+		filetypes = { "svelte" },
+		root_dir = lspconfig.util.root_pattern("package.json", "svelte.config.js"),
 	})
 
 	lspconfig.ts_ls.setup({

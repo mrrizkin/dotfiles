@@ -6,7 +6,8 @@ config.color_scheme = "Catppuccin Macchiato"
 
 -- Font configuration
 config.font_size = 10.0
-config.line_height = 1.0
+config.cell_width = 0.8
+config.line_height = 0.8
 
 -- Window appearance
 config.window_padding = {
@@ -15,7 +16,7 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.8
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true

@@ -30,4 +30,10 @@ M.htop = fterm:new({
 	dimensions = default_dimensions,
 })
 
+M.ai = fterm:new({
+	ft = "fterm_ai",
+	cmd = "qwen",
+	dimensions = default_dimensions,
+})
+
 return M
