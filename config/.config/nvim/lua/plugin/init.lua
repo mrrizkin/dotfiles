@@ -18,9 +18,14 @@ return {
 	{ "numToStr/Comment.nvim", event = "BufRead", config = require("plugin.config.comment") },
 	{ "mhartington/formatter.nvim", event = "BufWritePre", config = require("plugin.config.formatter") },
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		lazy = false,
-		dependencies = { "ray-x/lsp_signature.nvim", "neovim/nvim-lspconfig", "williamboman/mason-lspconfig.nvim" },
+		dependencies = {
+			"ray-x/lsp_signature.nvim",
+			"neovim/nvim-lspconfig",
+			"mason-org/mason.nvim",
+			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		},
 		config = require("plugin.config.lsp"),
 	},
 	{ "nvim-treesitter/nvim-treesitter", lazy = false, config = require("plugin.config.treesitter") },

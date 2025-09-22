@@ -11,14 +11,16 @@ return function()
 	----------------------------------- MASON ------------------------------------
 	local mason = require("mason")
 	local mason_lsp = require("mason-lspconfig")
+	local signature = require("lsp_signature")
+	local virtual_lsp = require("lsp_lines")
 
 	mason.setup()
 	mason_lsp.setup({ ensure_installed = config.ensure_installed })
+	signature.setup()
+	virtual_lsp.setup()
 
 	------------------------------------ LSP -------------------------------------
-	local lspconfig = require("lspconfig")
 	local cmp_lsp = require("cmp_nvim_lsp")
-	local utils = require("core.utils")
 
 	-- LSP settings
 	local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -40,7 +42,7 @@ return function()
 		},
 	}
 
-	lspconfig.lua_ls.setup({
+	vim.lsp.config("lua_ls", {
 		settings = {
 			Lua = {
 				diagnostics = { globals = { "vim" } },
@@ -56,11 +58,8 @@ return function()
 		capabilities = capabilities,
 	})
 
-	lspconfig.gopls.setup({
+	vim.lsp.config("gopls", {
 		capabilities = capabilities,
-		cmd = { "gopls" },
-		filetypes = { "go", "gomod", "gowork", "gotmpl" },
-		root_dir = lspconfig.util.root_pattern("go.mod", "go.work", ".git"),
 		settings = {
 			gopls = {
 				gofumpt = true,
@@ -76,10 +75,12 @@ return function()
 		},
 	})
 
-	lspconfig.pyright.setup({
+	vim.lsp.config("elixirls", {
 		capabilities = capabilities,
-		filetypes = { "python" },
-		root_dir = lspconfig.util.root_pattern("pyproject.toml", "setup.py", "requirements.txt", ".git"),
+	})
+
+	vim.lsp.config("pyright", {
+		capabilities = capabilities,
 		settings = {
 			python = {
 				analysis = {
@@ -94,24 +95,25 @@ return function()
 		},
 	})
 
-	lspconfig.svelte.setup({
-		capabilities = capabilities,
-		filetypes = { "svelte" },
-		root_dir = lspconfig.util.root_pattern("package.json", "svelte.config.js"),
-	})
-
-	lspconfig.ts_ls.setup({
+	vim.lsp.config("svelte", {
 		capabilities = capabilities,
 	})
 
-	utils.set_diagnostic_sign({
-		Error = " ",
-		Warn = " ",
-		Hint = " ",
-		Info = " ",
+	vim.lsp.config("ts_ls", {
+		capabilities = capabilities,
 	})
 
 	vim.diagnostic.config({
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = " ",
+				[vim.diagnostic.severity.WARN] = " ",
+				[vim.diagnostic.severity.INFO] = " ",
+				[vim.diagnostic.severity.HINT] = " ",
+			},
+		},
+		virtual_text = false,
+		virtual_lines = true,
 		underline = true,
 		float = {
 			show_header = true,
