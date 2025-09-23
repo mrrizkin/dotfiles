@@ -15,6 +15,7 @@ return function()
 	load_formatter("lua", "stylua")
 	load_formatter("json", "prettierd")
 	load_formatter("html", "prettierd")
+	load_formatter({ "astro", "html" }, "prettierd")
 	load_formatter({ "svelte", "html" }, "prettierd")
 	load_formatter({ "htmldjango", "html" }, "prettierd")
 	load_formatter("css", "prettierd")
@@ -33,10 +34,15 @@ return function()
 	load_formatter("toml", "taplo")
 	load_formatter("rust", "rustfmt")
 	load_formatter("dart", "dartformat")
+	load_formatter("templ", "templfmt")
 	load_formatter("python", "black")
 
 	filetype["php"] = function()
-		if vim.fn.filereadable("artisan") == 0 or vim.fn.executable("./vendor/bin/pint") == 0 then
+		if vim.fn.filereadable("artisan") == 0 then
+			return default.php_cs_fixer()
+		end
+
+		if vim.fn.executable("./vendor/bin/pint") == 0 then
 			return default.php_cs_fixer()
 		end
 
@@ -46,14 +52,6 @@ return function()
 				"--quiet",
 			},
 			stdin = false,
-		}
-	end
-
-	filetype["astro"] = function()
-		return {
-			exe = "prettierd",
-			args = { vim.api.nvim_buf_get_name(0) },
-			stdin = true,
 		}
 	end
 

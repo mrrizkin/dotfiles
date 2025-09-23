@@ -24,12 +24,23 @@ local maps = {
 	-- keep it centered
 	nmap("<c-d>", "<c-d>zz", opts("Scroll down and keep cursor position")),
 	nmap("<c-u>", "<c-u>zz", opts("Scroll up and keep cursor position")),
+	nmap("n", "nzzzv", opts("Center after next line")),
+	nmap("N", "Nzzzv", opts("Center after previous line")),
+	nmap("J", "mzJ`z", opts("Join line and keep cursor position")),
+
+	imap("<c-b>", "<esc>^i", opts("Move to beginning of line")),
+	imap("<c-e>", "<esc>$a", opts("Move to end of line")),
+	imap("<c-h>", "<left>", opts("Move left")),
+	imap("<c-l>", "<right>", opts("Move right")),
+	imap("<c-j>", "<down>", opts("Move down")),
+	imap("<c-k>", "<up>", opts("Move up")),
+
 
 	-- undo breakpoints
-	nmap("<m-j>", ":m .+1<cr>==", opts("Move current line down")),
-	nmap("<m-k>", ":m .-2<cr>==", opts("Move current line up")),
-	nmap("<m-j>", "<cmd>exec 'normal! m .+1<cr>=='<cr>", opts("Move current line down")),
-	nmap("<m-k>", "<cmd>exec 'normal! m .-2<cr>=='<cr>", opts("Move current line up")),
+	imap(",", ",<c-g>u", opts("Undo breakpoint")),
+	imap(".", ".<c-g>u", opts("Undo breakpoint")),
+	imap("!", "!<c-g>u", opts("Undo breakpoint")),
+	imap("?", "?<c-g>u", opts("Undo breakpoint")),
 
 	-- moving text
 	vmap("<m-j>", ":m '>+1<cr>gv=gv", opts("Move selected text down")),
@@ -50,8 +61,8 @@ local maps = {
 	nmap("<c-l>", "<c-w>l", opts("Move to window on the right")),
 
 	-- manual indent selection
-	vmap("<c-j>", "<gv", opts("Indent selection left")),
-	vmap("<c-k>", "><gv", opts("Indent selection right")),
+	vmap("<", "<gv", opts("Indent selection left")),
+	vmap(">", ">gv", opts("Indent selection right")),
 
 	-- horizontal scroll mouse
 	map({ "n", "v", "i" }, "<S-ScrollWheelDown>", "zl6", opts("Scroll right")),
@@ -77,6 +88,8 @@ local maps = {
 
 	-- LSP Diagnostics
 	nmap("<leader>e", "<cmd>lua vim.diagnostic.open_float()<cr>", opts("Open diagnostics")),
+	nmap("[d", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded' } })<cr>", opts("Previous diagnostic")),
+	nmap("]d", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded' } })<cr>", opts("Next diagnostic")),
 
 	-- Telescope
 	nmap("<c-p>", "<cmd>Telescope find_files hidden=true<cr>", opts("Find files")),
@@ -87,6 +100,7 @@ local maps = {
 		telescope.extensions.live_grep_args.live_grep_args()
 	end, opts("Live grep args")),
 	nmap("<m-p>", "<cmd>Telescope live_grep<cr>", opts("Live grep")),
+	nmap("<m-s-d>", "<cmd>Telescope diagnostics<cr>", opts("Diagnostics")),
 
 	-- Luasnip
 	map({ "i", "s" }, "<c-j>", function()

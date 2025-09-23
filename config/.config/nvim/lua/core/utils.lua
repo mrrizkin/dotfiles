@@ -269,4 +269,10 @@ M.find_keymaps = function(pattern)
 	return matches
 end
 
+M.load_lsps = function(lspconf, lsps, config)
+	for _, lsp in pairs(lsps) do
+		lspconf(lsp, config)
+	end
+end
+
 return M

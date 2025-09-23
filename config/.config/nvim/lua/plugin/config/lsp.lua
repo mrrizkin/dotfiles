@@ -4,7 +4,19 @@ return function()
 		ensure_installed = {
 			"gopls",
 			"lua_ls",
+			"emmet_ls",
+			"phpactor",
 			"ts_ls",
+			"svelte",
+			"pyright",
+			"elixirls",
+		},
+		lsp = {
+			"emmet_ls",
+			"phpactor",
+			"ts_ls",
+			"svelte",
+			"elixirls",
 		},
 	}
 
@@ -21,6 +33,7 @@ return function()
 
 	------------------------------------ LSP -------------------------------------
 	local cmp_lsp = require("cmp_nvim_lsp")
+	local utils = require("core.utils")
 
 	-- LSP settings
 	local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -41,6 +54,11 @@ return function()
 			},
 		},
 	}
+
+	-- LSP Setup
+	utils.load_lsps(vim.lsp.config, config.lsp, {
+		capabilities = capabilities,
+	})
 
 	vim.lsp.config("lua_ls", {
 		settings = {
@@ -75,10 +93,6 @@ return function()
 		},
 	})
 
-	vim.lsp.config("elixirls", {
-		capabilities = capabilities,
-	})
-
 	vim.lsp.config("pyright", {
 		capabilities = capabilities,
 		settings = {
@@ -93,14 +107,6 @@ return function()
 				},
 			},
 		},
-	})
-
-	vim.lsp.config("svelte", {
-		capabilities = capabilities,
-	})
-
-	vim.lsp.config("ts_ls", {
-		capabilities = capabilities,
 	})
 
 	vim.diagnostic.config({
