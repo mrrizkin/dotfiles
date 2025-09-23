@@ -1,6 +1,5 @@
 local telescope = require("telescope")
 local luasnip = require("luasnip")
-local zen = require("zen-mode")
 local suggestion = require("supermaven-nvim.completion_preview")
 local fterm = require("plugin.config.fterm")
 local utils = require("core.utils")
@@ -130,9 +129,7 @@ local maps = {
 	end, opts("Toggle ai")),
 
 	-- Zen mode
-	nmap("<leader>zz", function()
-		zen.toggle({ plugins = { options = { enabled = true, ruler = false, showcmd = false, laststatus = 0 } } })
-	end, opts("Toggle zen mode")),
+	nmap("<leader>zz", "<cmd>ZenMode<cr>", opts("Toggle zen mode")),
 
 	-- Nvim Tree
 	nmap("<leader>f", "<cmd>NvimTreeToggle<cr>", opts("Toogle Neovim Tree")),

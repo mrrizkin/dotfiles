@@ -79,7 +79,36 @@ return {
 		config = require("plugin.config.dadbod-ui"),
 	},
 	{ "kristijanhusak/vim-dadbod-completion", ft = { "sql" }, dependencies = "kristijanhusak/vim-dadbod-ui" },
-	{ "folke/zen-mode.nvim", opts = {} },
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			window = {
+				options = {
+					signcolumn = "no",
+					number = false,
+					relativenumber = false,
+					cursorline = false,
+					cursorcolumn = false,
+					colorcolumn = "",
+					foldcolumn = "0",
+					list = false,
+				},
+			},
+			plugins = {
+				options = {
+					enabled = true,
+					ruler = false,
+					showcmd = false,
+					laststatus = 0,
+				},
+				wezterm = {
+					enable = true,
+					font = "+20",
+				},
+			},
+		},
+		cmd = { "ZenMode" },
+	},
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",

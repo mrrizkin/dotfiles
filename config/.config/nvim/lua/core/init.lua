@@ -54,7 +54,7 @@ opt.showmatch = true
 opt.hlsearch = false
 opt.incsearch = true
 
-opt.wrap = false
+opt.wrap = true
 opt.colorcolumn = "81"
 opt.completeopt = "menu,menuone,noselect"
 
